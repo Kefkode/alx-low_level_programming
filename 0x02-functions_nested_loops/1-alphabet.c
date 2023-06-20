@@ -1,5 +1,3 @@
-Task 1
-
 #include "main.h"
 #include <unistd.h>
 
