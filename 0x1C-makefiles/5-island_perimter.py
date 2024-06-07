@@ -1,23 +1,22 @@
 #!/usr/bin/python3
-"""Defining an island permiter of the measuring function as given"""
+"""Defining the 5-island_iperimeter module"""
+
 
 def island_perimeter(grid):
-    """Returns pm of the island
+    """Returns the perimeter of the island described in grid"""
+    c = 0
+    length = len(grid) - 1
+    width = len(grid[0]) - 1
 
-    Grid re presents water by Zero && land by One.
-
-    """
-    width = len(grid[0])
-    height = len(grid)
-    edges = 0
-    size = 0
-    
-    for i in range(height):
-        for j in range(width):
-            if grid[i][j] == 1:
-                size += 1
-                if (j > 0 and grid[i][j - 1] == 1):
-                    edges += 1
-                if (i > 0 and grid[1 - 1][j] == 1):
-                    edges += 1
-    return size * 4 - edges * 2
+    for i, r in enumerate(grid):
+        for j, n in enumerate(r):
+            if n == 1:
+                if i == 0 or grid[i - 1][j] != 1:
+                    c += 1
+                if j == 0 or grid[i][j - 1] != 1:
+                    c += 1
+                if j == width or grid[i][j + 1] != 1:
+                    c += 1
+                if i == length or grid[i + 1][j] != 1:
+                    c += 1
+    return c
